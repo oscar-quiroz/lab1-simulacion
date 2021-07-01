@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row text-center">
+        <h1> Metodo de cuadrados medios</h1>
+    </div>
+    <br>
+    <div class="row ">
+
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-text">Semilla</span>
+                <input type="number" class="form-control" min="0" [(ngModel)]="semilla">
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="input-group">
+
+                <span class="input-group-text">Minimo</span>
+                <input type="number" class="form-control" min="0" [(ngModel)]="min">
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-text">Maximo</span>
+                <input type="number" class="form-control" min="0" [(ngModel)]="max">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-text">Cantidad</span>
+                <select class="form-select" [(ngModel)]="cantidad">
+                    <option selected value="5" >5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                  
+                  </select>
+            </div>
+        </div>
+
+        <div class="col">
+            <button class="btn btn-info" (click)="generar()"> Generar</button>
+        </div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-2">
+            <p><strong>Semilla:</strong> {{semilla}}</p>
+            <p><strong>Minimo:</strong> {{min}}</p>
+            <p>
+                <Strong>Maximo:</Strong> {{max}}</p>
+            <p>
+                <Strong>Cantidad</Strong>: {{cantidad}}</p>
+
+        </div>
+
+        <div class="col">
+            <table class="table table-striped table-hover">
+
+                <thead>
+                    <tr>
+                        <th scope="col">i</th>
+                        <th scope="col">Xi</th>
+                        <th scope="col">Xi²</th>
+                        <th scope="col">Extension</th>
+                        <th scope="col">Extraccion</th>
+                        <th scope="col">Ri</th>
+                        <th scope="col">Ni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>

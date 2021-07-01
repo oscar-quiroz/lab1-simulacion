@@ -1,0 +1,10 @@
+.forms {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+p {
+    padding: 10px;
+    background-color: #e2c574;
+}
