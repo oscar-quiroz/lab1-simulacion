@@ -71,14 +71,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>{{xi}}</td>
-                        <td>{{xi2}}</td>
-                        <td>{{extaccion}}</td>
-                        <td>{{extaccion}}</td>
-                        <td>{{ri}}</td>
-                        <td>{{ri}}</td>
+                    <tr *ngFor="let item of listaNumeros;let i = index">
+                        <th>{{i}}</th>
+                        <td>{{item.xi}}</td>
+                        <td>{{item.xi2}}</td>
+                        <td>{{item.extension}}</td>
+                        <td>{{item.extaccion}}</td>
+                        <td>{{item.ri}}</td>
+                        <td>{{item.ni}}</td>
 
                     </tr>
 
