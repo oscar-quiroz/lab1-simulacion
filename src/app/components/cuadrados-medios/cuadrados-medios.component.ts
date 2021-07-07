@@ -42,7 +42,9 @@ export class CuadradosMediosComponent implements OnInit {
       extaccion: this.extaccion,
       ri: this.ri,
       ni: this.ni,
+      validate: false,
     });
+
     if (this.count === parseInt(this.cantidad)) {
       console.log('terminar');
     } else {
