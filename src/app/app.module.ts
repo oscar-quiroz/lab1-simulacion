@@ -8,6 +8,10 @@ import { PruebasComponent } from './pages/pruebas/pruebas.component';
 import { CuadradosComponent } from './components/cuadrados/cuadrados.component';
 import { CuadradosMediosComponent } from './components/cuadrados-medios/cuadrados-medios.component';
 import { FormsModule } from '@angular/forms';
+import { MultiplicativasComponent } from './components/multiplicativas/multiplicativas.component';
+import { LinealComponent } from './components/lineal/lineal.component';
+import { UniformeComponent } from './components/uniforme/uniforme.component';
+import { NormalComponent } from './components/normal/normal.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { FormsModule } from '@angular/forms';
     MetodosComponent,
     PruebasComponent,
     CuadradosComponent,
-    CuadradosMediosComponent
+    CuadradosMediosComponent,
+    MultiplicativasComponent,
+    LinealComponent,
+    UniformeComponent,
+    NormalComponent
   ],
   imports: [
     BrowserModule,
