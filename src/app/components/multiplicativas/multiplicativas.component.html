@@ -6,7 +6,15 @@
     <div class="row">
         <div class="col">
             <div class="input-group">
-                <span class="input-group-text">Semilla</span>
+                <span class="input-group-text">X0</span>
+                <input type="number" class="form-control" min="0" [(ngModel)]="x0" />
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">t </span>
+                <input type="number" class="form-control" min="0" [(ngModel)]="semilla" />
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">g</span>
                 <input type="number" class="form-control" min="0" [(ngModel)]="semilla" />
             </div>
         </div>
@@ -44,12 +52,16 @@
     <br />
     <div class="row">
         <div class="col-2">
-            <p><strong>Semilla:</strong> {{ semilla }}</p>
-            <p><strong>Minimo:</strong> {{ min }}</p>
+            <p><strong>x0: </strong> {{ semilla }}</p>
+            <p><strong>t: </strong> {{ semilla }}</p>
+            <p><strong>g: </strong> {{ semilla }}</p>
+            <p><strong>a= 8t + 3: </strong> {{ semilla }}</p>
+            <p><strong>m = 2 ^ g: </strong> {{ semilla }}</p>
+            <p><strong>Minimo: </strong> {{ min }}</p>
             <p>
-                <Strong>Maximo:</Strong> {{ max }}</p>
+                <Strong>Maximo: </Strong> {{ max }}</p>
             <p>
-                <Strong>Cantidad</Strong>: {{ cantidad }}</p>
+                <Strong>Cantidad: </Strong>: {{ cantidad }}</p>
         </div>
 
         <div class="col">
