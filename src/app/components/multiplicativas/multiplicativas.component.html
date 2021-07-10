@@ -11,11 +11,11 @@
             </div>
             <div class="input-group">
                 <span class="input-group-text">t </span>
-                <input type="number" class="form-control" min="0" [(ngModel)]="semilla" />
+                <input type="number" class="form-control" min="0" (change)="getA()" [(ngModel)]="t" />
             </div>
             <div class="input-group">
                 <span class="input-group-text">g</span>
-                <input type="number" class="form-control" min="0" [(ngModel)]="semilla" />
+                <input type="number" class="form-control" min="0" (change)="getM()" [(ngModel)]="g" />
             </div>
         </div>
 
@@ -46,17 +46,17 @@
         </div>
 
         <div class="col">
-            <button class="btn btn-info">Generar</button>
+            <button class="btn btn-info" (click)="generar()">Generar</button>
         </div>
     </div>
     <br />
     <div class="row">
         <div class="col-2">
-            <p><strong>x0: </strong> {{ semilla }}</p>
-            <p><strong>t: </strong> {{ semilla }}</p>
-            <p><strong>g: </strong> {{ semilla }}</p>
-            <p><strong>a= 8t + 3: </strong> {{ semilla }}</p>
-            <p><strong>m = 2 ^ g: </strong> {{ semilla }}</p>
+            <p><strong>x0: </strong> {{ x0 }}</p>
+            <p><strong>t: </strong> {{ t }}</p>
+            <p><strong>g: </strong> {{ g }}</p>
+            <p><strong>a= 8t + 3: </strong> {{ a }}</p>
+            <p><strong>m = 2 ^ g: </strong> {{ m }}</p>
             <p><strong>Minimo: </strong> {{ min }}</p>
             <p>
                 <Strong>Maximo: </Strong> {{ max }}</p>
@@ -70,21 +70,14 @@
                     <tr>
                         <th scope="col">i</th>
                         <th scope="col">Xi</th>
-                        <th scope="col">Xi²</th>
-                        <th scope="col">Extension</th>
-                        <th scope="col">Extraccion</th>
                         <th scope="col">Ri</th>
                         <th scope="col">Ni</th>
-                        <th scope="col">Validate</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of listaNumeros; let i = index">
-                        <th>{{ i }}</th>
+                        <th>{{ i + 1 }}</th>
                         <td>{{ item.xi }}</td>
-                        <td>{{ item.xi2 }}</td>
-                        <td>{{ item.extension }}</td>
-                        <td>{{ item.extaccion }}</td>
                         <td>{{ item.ri }}</td>
                         <td>{{ item.ni }}</td>
                         <td>{{ item.validate }}</td>
