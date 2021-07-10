@@ -18,8 +18,8 @@ export class LinealComponent implements OnInit {
   m: number = 0;
 
   xi: number = 0;
-  min: number = 0;
-  max: number = 0;
+  min: number = 8;
+  max: number = 10;
   cantidad;
 
   ri: number = 0;
