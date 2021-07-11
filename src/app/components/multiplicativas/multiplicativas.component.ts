@@ -29,6 +29,7 @@ export class MultiplicativasComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
   Iniciar(x0) {
     this.count += 1;
     this.x0 = this.getXi(x0);
