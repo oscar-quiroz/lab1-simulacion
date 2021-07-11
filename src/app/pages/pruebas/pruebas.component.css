@@ -19,7 +19,7 @@ input[type="file"] {
 
 .cargar {
     position: relative;
-    width: 290px;
+    width: auto;
     background-color: #fff;
     color: #000;
     font-size: 20px;
@@ -38,7 +38,7 @@ input[type="file"] {
 }
 
 .fileMatrix {
-    width: 290px;
+    width: auto;
     font-size: 20px;
     padding: 5px;
     text-align: center;
