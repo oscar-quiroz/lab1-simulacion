@@ -12,6 +12,8 @@ import { MultiplicativasComponent } from './components/multiplicativas/multiplic
 import { LinealComponent } from './components/lineal/lineal.component';
 import { UniformeComponent } from './components/uniforme/uniforme.component';
 import { NormalComponent } from './components/normal/normal.component';
+import { PruebaMediasComponent } from './components/prueba-medias/prueba-medias.component';
+import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-varianza.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NormalComponent } from './components/normal/normal.component';
     MultiplicativasComponent,
     LinealComponent,
     UniformeComponent,
-    NormalComponent
+    NormalComponent,
+    PruebaMediasComponent,
+    PruebaVarianzaComponent
   ],
   imports: [
     BrowserModule,
