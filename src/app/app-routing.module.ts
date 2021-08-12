@@ -10,6 +10,8 @@ import { UniformeComponent } from './components/uniforme/uniforme.component';
 import { NormalComponent } from './components/normal/normal.component';
 import { PruebaMediasComponent } from './components/prueba-medias/prueba-medias.component'
 import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-varianza.component'
+import { HomeComponent } from './pages/home/home.component';
+
 
 const routes: Routes = [
   {
@@ -30,7 +32,15 @@ const routes: Routes = [
       {path:'prueba-medias',component:PruebaMediasComponent},
       {path:'prueba-varianza',component:PruebaVarianzaComponent}
     ]
+  }, 
+  {
+    path: 'home',
+    component: HomeComponent,
   },
+{
+  path:'**',
+  redirectTo: 'home'
+}
 ];
 
 @NgModule({
