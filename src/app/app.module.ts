@@ -14,6 +14,8 @@ import { UniformeComponent } from './components/uniforme/uniforme.component';
 import { NormalComponent } from './components/normal/normal.component';
 import { PruebaMediasComponent } from './components/prueba-medias/prueba-medias.component';
 import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-varianza.component';
+import { Pruebachi2Component } from './components/pruebachi2/pruebachi2.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-var
     UniformeComponent,
     NormalComponent,
     PruebaMediasComponent,
-    PruebaVarianzaComponent
+    PruebaVarianzaComponent,
+    Pruebachi2Component,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

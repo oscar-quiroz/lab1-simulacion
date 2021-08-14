@@ -10,6 +10,7 @@ import { UniformeComponent } from './components/uniforme/uniforme.component';
 import { NormalComponent } from './components/normal/normal.component';
 import { PruebaMediasComponent } from './components/prueba-medias/prueba-medias.component'
 import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-varianza.component'
+import { Pruebachi2Component } from './components/pruebachi2/pruebachi2.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
     component: PruebasComponent,
     children:[
       {path:'prueba-medias',component:PruebaMediasComponent},
-      {path:'prueba-varianza',component:PruebaVarianzaComponent}
+      {path:'prueba-varianza',component:PruebaVarianzaComponent},
+      {path:'pruebachi2',component:Pruebachi2Component}
     ]
   },
 ];

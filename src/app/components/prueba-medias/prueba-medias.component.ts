@@ -16,24 +16,35 @@ export class PruebaMediasComponent implements OnInit {
   li: number = -1;
   ls: number = -1;
 
+  /*
+  * esta funcion obtiene la media de un conjunto de datos
+  */
   getmedia = function (data: Array<number>) {    
     return data.reduce((a, b) => a + b, 0) / data.length
   }
-
+  /*
+  * esta funcion obtiene la varianza de una poblacion
+  */
   getVarianzaPoblacion = function (data: Array<number>) {
     let mean = this.getmedia(data)
     return data.reduce((a,b)=>a + (b-mean)**2,0) / mean
   }
-
+  /*
+  * esta funcion obtiene la varianza para una muestra
+  */
   getVarianzaMuestra = function (data: Array<number>) {
     let mean = data.reduce((a, b) => a + b, 0) / (data.length -1)
     return data.reduce((a,b)=>a + (b-mean)**2,0) / mean
   }
-
+  /*
+  * esta funcion obtiene la desviacion estandar
+  */
   getDesviacionEstandar= function (data:Array<number>) {
     return this.getVarianzaPoblacion(data) ** 0.5
   }
-
+  /*
+  * esta funcion obtiene el valor de z de la tabla de distribucion de z
+  */
   percentile_z = function percentile_z(p) {
     if (p < 0.5) return -percentile_z(1-p);
     if (p > 0.92) {
@@ -47,15 +58,22 @@ export class PruebaMediasComponent implements OnInit {
     return p*(((-25.4410605*r+41.3911977)*r-18.6150006)*r+2.5066282)/
              ((((3.1308291*r-21.0622410)*r+23.0833674)*r-8.4735109)*r+1);
   }
-
+  /*
+  * esta funcion obtiene el limite inferior
+  */
   lim_inferior = function(data: Array<number>){
     return 0.5 - (this.uno_menos_alfa_medios*(1/(12*data.length)**0.5))
   }
-
+  /*
+  * esta funcion obtiene el limite superior
+  */
   lim_superior = function (data: Array<number>) {
     return 0.5 + (this.uno_menos_alfa_medios*(1/(12*data.length)**0.5))
   }
-
+  /*
+  * esta funcion valida si el conjunto de datos de entrada
+  * cumple con la prueba de medias
+  */
   validate = function(data:Array<number>){    
     this.n = data.length;   
     this.R = this.getmedia(data);   
