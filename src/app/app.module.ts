@@ -16,6 +16,8 @@ import { PruebaMediasComponent } from './components/prueba-medias/prueba-medias.
 import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-varianza.component';
 import { Pruebachi2Component } from './components/pruebachi2/pruebachi2.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { HomeComponent } from './pages/home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { InicioComponent } from './pages/inicio/inicio.component';
     PruebaMediasComponent,
     PruebaVarianzaComponent,
     Pruebachi2Component,
-    InicioComponent
+    InicioComponent,
+    HomeComponent
+
   ],
   imports: [
     BrowserModule,
