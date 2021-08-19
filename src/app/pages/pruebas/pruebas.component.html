@@ -15,26 +15,46 @@
       </button>
             <p class="fileMatrix" [ngClass]="ok">{{ auxInputFile }}</p>
         </div>
+
+        <h4>Cantidad de números : {{ lsita.length}}
+        </h4>
+
     </div>
     <div class="col-8">
         <div class="grid-container">
-            <div *ngFor="let item of lsita">{{ item }}</div>
+            <div *ngFor="let item of lsita">{{ item | slice: 0:7 }}</div>
         </div>
     </div>
 </div>
 
+<hr>
+<br>
+
 <div class="row">
     <ul class="nav nav-tabs nav-fill">
         <li class="nav-item">
-            <a routerLink="/pruebas/prueba-medias" routerLinkActive="active" class="nav-link active" aria-current="page" href="#">prueba medias</a>
-        </li>
-        <li class="nav-item">
-            <a routerLink="/pruebas/prueba-varianza" routerLinkActive="active" class="nav-link" href="#">prueba varianza</a>
-        </li>
-        <li class="nav-item">
-            <a routerLink="/pruebas/pruebachi2" routerLinkActive="active" class="nav-link" href="#">prueba chi^2</a>
-        </li>
-        <!-- <li class="nav-item">
+            <a routerLink="/pruebas/prueba-medias" routerLinkActive="active" class="nav-link active" aria-current="page" href="#">prueba medias</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        routerLink="/pruebas/prueba-varianza"
+        routerLinkActive="active"
+        class="nav-link"
+        href="#"
+        >prueba varianza</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        routerLink="/pruebas/pruebachi2"
+        routerLinkActive="active"
+        class="nav-link"
+        href="#"
+        >prueba chi^2</a
+      >
+    </li>
+    <!-- <li class="nav-item">
             <a class="nav-link" href="#">pruebas</a>
         </li>
         <li class="nav-item">
