@@ -17,6 +17,7 @@ import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-var
 import { Pruebachi2Component } from './components/pruebachi2/pruebachi2.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { HomeComponent } from './pages/home/home.component';
+import { PruebaKsComponent } from './components/prueba-ks/prueba-ks.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HomeComponent } from './pages/home/home.component';
     PruebaVarianzaComponent,
     Pruebachi2Component,
     InicioComponent,
-    HomeComponent
+    HomeComponent,
+    PruebaKsComponent
 
   ],
   imports: [

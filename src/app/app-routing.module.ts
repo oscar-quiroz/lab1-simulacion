@@ -12,6 +12,7 @@ import { PruebaMediasComponent } from './components/prueba-medias/prueba-medias.
 import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-varianza.component'
 import { Pruebachi2Component } from './components/pruebachi2/pruebachi2.component';
 import { HomeComponent } from './pages/home/home.component';
+import { PruebaKsComponent } from './components/prueba-ks/prueba-ks.component';
 
 
 
@@ -33,7 +34,8 @@ const routes: Routes = [
     children:[
       {path:'prueba-medias',component:PruebaMediasComponent},
       {path:'prueba-varianza',component:PruebaVarianzaComponent},
-      {path:'pruebachi2',component:Pruebachi2Component}
+      {path:'pruebachi2',component:Pruebachi2Component},
+      {path:'prueba-ks',component:PruebaKsComponent}
     ]
   }, 
   {
