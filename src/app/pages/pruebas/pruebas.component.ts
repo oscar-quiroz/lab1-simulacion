@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from '../../services/list.service';
 
 @Component({
   selector: 'app-pruebas',
@@ -12,9 +13,11 @@ export class PruebasComponent implements OnInit {
   resultFile: any;
   ok = '';
   lsita = [];
+  longitud=0;
 
   numeros: any;
-  constructor() {}
+
+  constructor( private listService:ListService) {}
 
   ngOnInit(): void {}
 
@@ -31,7 +34,15 @@ export class PruebasComponent implements OnInit {
       this.numeros = contenido;
 
       this.lsita = this.numeros.split(',');
+      this.listService.addList( this.numeros );
+      this.imprimirLongitud();
     };
     lector.readAsText(archivo);
+    
+  }
+
+
+  imprimirLongitud(){
+    this.longitud = this.listService.getLength();
   }
 }
