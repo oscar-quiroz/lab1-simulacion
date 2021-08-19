@@ -38,7 +38,7 @@
         </div>
 
         <div class="col">
-            <button class="btn btn-info" (click)="generate()">Generar</button>
+            <button class="btn btn-info" (click)="generar()">Generar</button>
         </div>
     </div>
     <br />
@@ -69,9 +69,9 @@
                     <tr *ngFor="let item of listaNumeros; let i = index">
                         <th>{{ i }}</th>
                         <td>{{ item.xi }}</td>
-                        <td>{{ item.xi2 }}</td>
-                        <td>{{ item.extension }}</td>
-                        <td>{{ item.extaccion }}</td>
+                        <td>{{ item.xiSquared }}</td>
+                        <td>{{ item.xiSLength }}</td>
+                        <td>{{ item.xBetween }}</td>
                         <td>{{ item.ri }}</td>
                         <td>{{ item.ni }}</td>
                     </tr>

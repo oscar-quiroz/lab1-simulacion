@@ -1,5 +1,39 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { empty } from 'rxjs';
+
+//clase para generar los numeros pseudoaleatorisos
+class pseudogenerator {
+  public seed: number;
+  public list: Array<object> = [];
+  constructor(seed: number) {
+    this.seed = seed;
+  }
+  generate = (
+    min: number,
+    max: number,
+    amount: number,
+    newxi: number = NaN
+  ) => {
+    let xi = newxi ? newxi : this.seed;
+    let xiSquared = xi ** 2;
+    let xiSLength = ('' + xiSquared).length;
+    let xBetween =
+      xiSLength % 2 != 0 || xiSLength - ('' + xi).length < 4
+        ? Math.floor(
+            (xiSquared / 10 ** Math.floor((xiSLength - 4) / 2 + 1)) % 10000
+          )
+        : Math.floor(
+            (xiSquared / 10 ** Math.floor((xiSLength - 4) / 2)) % 10000
+          );
+    let ri = xBetween / 10000;
+    let ni = min + (max - min) * ri;
+    this.list.push({ xi, xiSquared, xiSLength, xBetween, ri, ni });
+    let amountxi = amount - 1;
+    if (amountxi > 0) {
+      this.generate(min, max, amountxi, xBetween);
+    } else return true;
+    return;
+  };
+}
 
 @Component({
   selector: 'app-cuadrados-medios',
@@ -27,60 +61,14 @@ export class CuadradosMediosComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  init(semilla) {
-    this.count += 1;
-    this.xi = semilla;
-    this.xi2 = Math.pow(this.xi, 2);
-    this.extension = this.xi2.toString().length;
-    this.extaccion = this.extract(this.xi2);
-    this.ri = this.extaccion / 10000;
-    this.ni = this.getNi(this.ri);
-    this.listaNumeros.push({
-      xi: this.xi,
-      xi2: this.xi2,
-      extension: this.extension,
-      extaccion: this.extaccion,
-      ri: this.ri,
-      ni: this.ni,
-    });
-
-    if (this.count === parseInt(this.cantidad)) {
-      console.log('terminar');
+  generar() {
+    if (this.semilla === 0) {
+      alert('debe ingresar todos los campos');
     } else {
-      this.init(this.extaccion);
-    }
-  }
-
-  getNi(ri) {
-    return this.min + (this.max - this.min) * ri;
-  }
-
-  extract(number) {
-    let length: number = number.toString().length;
-    if (length % 2 != 0) {
-      let result =
-        (number / Math.pow(10, Math.floor((length - 4) / 2 + 1))) %
-        Math.floor(Math.pow(10, 4));
-      return Math.floor(result);
-    } else {
-      let result2 =
-        (number / Math.pow(10, Math.floor((length - 4) / 2))) %
-        Math.floor(Math.pow(10, 4));
-      return Math.floor(result2);
-    }
-  }
-
-  generate() {
-    this.listaNumeros = [];
-    this.count = 0;
-    if (this.semilla > 0 && this.min > 0 && this.max > 0 && this.cantidad > 0) {
-      if (this.min < this.max) {
-        this.init(this.semilla);
-      } else {
-        alert('min debe ser menor a max');
-      }
-    } else {
-      alert('Fsota');
+      let generador = new pseudogenerator(this.semilla);
+      generador.generate(this.min, this.max, this.cantidad);
+      console.log(generador.list);
+      this.listaNumeros = generador.list;
     }
   }
 }
