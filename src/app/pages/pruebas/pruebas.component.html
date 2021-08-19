@@ -15,13 +15,20 @@
       </button>
             <p class="fileMatrix" [ngClass]="ok">{{ auxInputFile }}</p>
         </div>
+
+        <h4>Cantidad de números : {{ lsita.length}}
+        </h4>
+
     </div>
     <div class="col-8">
         <div class="grid-container">
-            <div *ngFor="let item of lsita">{{ item }}</div>
+            <div *ngFor="let item of lsita">{{ item | slice: 0:7 }}</div>
         </div>
     </div>
 </div>
+
+<hr>
+<br>
 
 <div class="row">
     <ul class="nav nav-tabs nav-fill">
