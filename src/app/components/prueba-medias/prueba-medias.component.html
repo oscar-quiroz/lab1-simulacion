@@ -1,4 +1,8 @@
-<div class="row">    
+<br />
+
+<h1>Prueba de medias</h1>
+<p>La prueba de medias mide la <strong>aleatoriedad</strong> de los números pseaudo aleatorios que ha ingresado</p>
+<div class="row">
     <div class="col">
         <div class="input-group">
             <span class="input-group-text"> α </span>
@@ -6,6 +10,32 @@
         </div>
     </div>
     <div class="col">
-        <button class="btn btn-info" (click)="iniciar()">Ejecutar prueba Medias</button>
+        <button class="btn btn-info" (click)="iniciar()">
+      Ejecutar prueba Medias
+    </button>
+    </div>
+</div>
+
+<br />
+<div class="row ">
+    <div class="col-auto">
+        <div class="lds-ring" *ngIf="isLoad">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div *ngIf="mostrar">
+            <div class="valid" *ngIf="isValid">
+                <h2> Los números han pasado la prueba de medias! 😁👌</h2>
+
+            </div>
+
+            <div class="invalid" *ngIf="!isValid">
+                <h2> Los números no pasaron la prueba de medias! 😥😖</h2>
+            </div>
+        </div>
+
     </div>
 </div>

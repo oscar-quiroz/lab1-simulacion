@@ -21,6 +21,10 @@ export class PruebaVarianzaComponent implements OnInit {
   li : number = NaN;
   ls : number = NaN;
 
+  isLoad: boolean;
+  isValid: boolean;
+  mostrar: boolean = false;
+
   /*
   * esta funcion obtiene la media de un conjunto de datos
   */
@@ -85,7 +89,23 @@ export class PruebaVarianzaComponent implements OnInit {
     }
   }
 
-  iniciar = function () {     
+  iniciar = function () { 
+    
+    this.isLoad = true;
+    setTimeout(() => {
+      this.mostrar = true;
+      let listaAux = this.pueba_varianza(this.ListService.lista_de_numeros)
+      if (listaAux.valid) {
+        console.log('los datos pasaron las pruebas');
+        this.isLoad = false;
+        this.isValid = true;
+      } else {
+        console.log('los datos no pasaron als pruebas');
+        this.isLoad = false;
+        this.isValid = false;
+      }
+    }, 500);
+
     console.log(this.pueba_varianza(this.ListService.lista_de_numeros));
   }
 
