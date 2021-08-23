@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import * as inv_chi_2 from "inv-chisquare-cdf";
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
   selector: 'app-pruebachi2',
   templateUrl: './pruebachi2.component.html',
   styleUrls: ['./pruebachi2.component.css']
 })
-export class Pruebachi2Component implements OnInit {  
+export class Pruebachi2Component implements OnInit {
+
+  numinter :number = 10;
+  alpha :number = 0.05;
  
   Compare = {
     LESS_THAN: -1,
@@ -21,17 +25,21 @@ export class Pruebachi2Component implements OnInit {
    * @param {any} data    el conjunto de datos a evaluar
    * @returns {Object} {intervals,f_esperada,sum_chi2,...}
    */
-  chi_e_test = function(intevalos:number,data:Array<number>){
-    let res = this.separate_intervals(intevalos,data); // los intervalos separados
-    let f_esp = data.length/intevalos;
+  chi_e_test = function(data:Array<number>){
+    if (!data || data.length == 0){
+      alert("por favor importe un conjunto de datos")
+      return
+    }
+    let res = this.separate_intervals(this.numinter,data); // los intervalos separados
+    let f_esp = data.length/this.numinter;
     this.calculateFrecuency(data,res);
     let chi_sum = 0;
     res.forEach(element => { //calculamos chi en base a la frecuencia
       element.chi2 = (element.f - f_esp)**2 / f_esp
       chi_sum += element.chi2;
     });    
-    let gl = intevalos-1; // grados de libertad
-    let test_result = inv_chi_2.invChiSquareCDF(0.05,gl);//calculo de la funcion equivalente a prueba.chi.inv de exel
+    let gl = this.numinter-1; // grados de libertad
+    let test_result = inv_chi_2.invChiSquareCDF(this.alpha,gl);//calculo de la funcion equivalente a prueba.chi.inv de exel
     return {
       intervals:res,
       f_esperada:f_esp,
@@ -68,13 +76,13 @@ export class Pruebachi2Component implements OnInit {
    */
   separate_intervals = function(intervalos:number,data:Array<number>){
     let n = data.length;
-    let int_length = n/intervalos;
-    let min = Math.floor(Math.min(...data));
+    let min = Math.floor(Math.min(...data)); 
     let max = Math.ceil(Math.max(...data));
+    let int_length =  (max-min)/intervalos;    
     let inicial = min;
     let interv_frecuency = [];
     for (let index = 0; index < intervalos; index++) {      
-      this.interv_frecuency.push({li:inicial,ls:inicial+int_length,f:0})
+      interv_frecuency.push({li:inicial,ls:inicial+int_length,f:0})
       inicial = inicial+int_length;
     }
     return interv_frecuency;
@@ -123,7 +131,11 @@ export class Pruebachi2Component implements OnInit {
       return a < b ? this.Compare.LESS_THAN : this.Compare.BIGGER_THAN;
   }
 
-  constructor() {}
+  iniciar = function () {
+    console.log(this.chi_e_test(this.ListService.lista_de_numeros));
+  }
+
+  constructor(private ListService:ListService) { }
 
   ngOnInit(): void {
   }

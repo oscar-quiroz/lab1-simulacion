@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
   selector: 'app-prueba-medias',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PruebaMediasComponent implements OnInit {
-  aceptacion : number = 0.95;
   alfa : number = 0.05;
+  aceptacion : number = 1- this.alfa;  
   n: number = -1;
   R : number = -1;
   uno_menos_alfa_medios :number = 1- (this.alfa/2);
@@ -22,12 +23,19 @@ export class PruebaMediasComponent implements OnInit {
   getmedia = function (data: Array<number>) {    
     return data.reduce((a, b) => a + b, 0) / data.length
   }
+
   /*
   * esta funcion obtiene la varianza de una poblacion
   */
-  getVarianzaPoblacion = function (data: Array<number>) {
-    let mean = this.getmedia(data)
-    return data.reduce((a,b)=>a + (b-mean)**2,0) / mean
+  getVarianzaPoblacion = function (arr: Array<number>) {
+    let mean = arr.reduce((acc, curr)=>{
+      return acc + curr
+    }, 0) / arr.length;
+    arr = arr.map((k)=>{
+      return (k - mean) ** 2
+    })
+    let sum = arr.reduce((acc, curr)=> acc + curr, 0);
+    return sum / arr.length
   }
   /*
   * esta funcion obtiene la varianza para una muestra
@@ -36,14 +44,16 @@ export class PruebaMediasComponent implements OnInit {
     let mean = data.reduce((a, b) => a + b, 0) / (data.length -1)
     return data.reduce((a,b)=>a + (b-mean)**2,0) / mean
   }
+
   /*
   * esta funcion obtiene la desviacion estandar
   */
   getDesviacionEstandar= function (data:Array<number>) {
     return this.getVarianzaPoblacion(data) ** 0.5
   }
+
   /*
-  * esta funcion obtiene el valor de z de la tabla de distribucion de z
+  * esta funcion obtiene el valor de z de la tabla de distribucion normal
   */
   percentile_z = function percentile_z(p) {
     if (p < 0.5) return -percentile_z(1-p);
@@ -70,33 +80,45 @@ export class PruebaMediasComponent implements OnInit {
   lim_superior = function (data: Array<number>) {
     return 0.5 + (this.uno_menos_alfa_medios*(1/(12*data.length)**0.5))
   }
+
   /*
   * esta funcion valida si el conjunto de datos de entrada
   * cumple con la prueba de medias
   */
-  validate = function(data:Array<number>){    
-    this.n = data.length;   
-    this.R = this.getmedia(data);   
-    this.z = this.percentile_z(this.uno_menos_alfa_medios)
-    this.li = this.lim_inferior(data);
-    this.ls = this.lim_superior(data);
-    let valid =  this.R > this.li && this.R <this.ls ? true : false;
+  validate = function(data:Array<number>){  
+    if (!data || data.length == 0){
+      alert("por favor importe un conjunto de datos")
+      return
+    }
+    this.aceptacion = 1- this.alfa;  
+    this.uno_menos_alfa_medios = 1- (this.alfa/2); 
+    let n = data.length;   
+    let R = this.getmedia(data);   
+    let z = this.percentile_z(this.uno_menos_alfa_medios)
+    let li = this.lim_inferior(data);
+    let ls = this.lim_superior(data);
+    let valid =  R > li && R < ls ? true : false;
     return {
-      n:this.n,
-      R:this.R,
+      alpha: this.alfa,
+      aceptacion : this.aceptacion,
+      n: n,
+      R: R,
       uno_menos_alfa_medios:this.uno_menos_alfa_medios,
-      z : this.z,
-      li : this.li,
-      ls : this.ls,
-      valid : true
+      z :  z,
+      li :  li,
+      ls :  ls,
+      valid : valid
     }
   }
 
-  constructor() { 
-
+  iniciar = function () {     
+    console.log(this.validate(this.ListService.lista_de_numeros));
   }
 
+  constructor(private ListService:ListService) { }
+
   ngOnInit(): void {
+    
   }
 
 }

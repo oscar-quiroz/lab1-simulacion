@@ -13,9 +13,9 @@ export class ListService {
 
   constructor() {}
 
-
   addList(numeros){
-    this.lista_de_numeros = numeros.split(',');
+    let trimed = numeros.replaceAll(/\n/g,'');
+    this.lista_de_numeros = trimed.split`,`.map(x=>+x)
   }
 
   getLength():number{

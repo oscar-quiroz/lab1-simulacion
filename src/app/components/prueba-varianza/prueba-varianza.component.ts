@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as inv_chi_2 from "inv-chisquare-cdf";
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
   selector: 'app-prueba-varianza',
@@ -29,9 +30,15 @@ export class PruebaVarianzaComponent implements OnInit {
   /*
   * esta funcion obtiene la varianza de una poblacion
   */
-  getVarianzaPoblacion = function (data: Array<number>) {
-    let mean = this.getmedia(data)
-    return data.reduce((a,b)=>a + (b-mean)**2,0) / mean
+  getVarianzaPoblacion = function (arr: Array<number>) {
+    let mean = arr.reduce((acc, curr)=>{
+      return acc + curr
+    }, 0) / arr.length;
+    arr = arr.map((k)=>{
+      return (k - mean) ** 2
+    })
+    let sum = arr.reduce((acc, curr)=> acc + curr, 0);
+    return sum / arr.length
   }
   /*
   * esta funcion obtiene la varianza para una muestra
@@ -48,16 +55,23 @@ export class PruebaVarianzaComponent implements OnInit {
   }
 
   pueba_varianza = function (data:Array<number>) {
+    if (!data || data.length == 0){
+      alert("por favor importe un conjunto de datos")
+      return
+    }
     this.n =  data.length;
     this.media = this.getmedia(data);
     this.varianza = this.getVarianzaPoblacion(data);
     this.DesvEdiv2 = this.getDesviacionEstandar(data) / 2;
     this.one_min_DesvEdiv2 = 1-this.DesvEdiv2;
+    console.log(this.varianza,this.DesvEdiv2)
     this.ji2alphadiv2 = inv_chi_2.invChiSquareCDF(this.DesvEdiv2,this.n-1);
     this.ji2minalphadiv2 = inv_chi_2.invChiSquareCDF(this.one_min_DesvEdiv2,this.n-1);
     this.li = this.ji2alphadiv2 /(12*this.n-1)
     this.ls = this.ji2minalphadiv2/(12*this.n-1)
+    let valid =  this.varianza > this.li && this.varianza < this.ls ? true : false;
     return {
+      alfa:this.alpha,
       n : this.n,
       media: this.media,
       varianza: this.varianza,
@@ -66,12 +80,18 @@ export class PruebaVarianzaComponent implements OnInit {
       chi_cua_alpha: this.ji2alphadiv2,
       menos_chi_cua_alpha:this.ji2minalphadiv2,
       li:this.li,
-      ls:this.ls
+      ls:this.ls,
+      valid
     }
   }
 
-  constructor() { }
+  iniciar = function () {     
+    console.log(this.pueba_varianza(this.ListService.lista_de_numeros));
+  }
 
+
+  constructor(private ListService:ListService) { }
+  
   ngOnInit(): void {
 
   }
