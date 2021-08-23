@@ -1,3 +1,8 @@
+<br />
+
+<h1>Prueba Chi^2</h1>
+<p>La prueba Chi^2 mide la <strong>uniformidad</strong> de los números pseaudo aleatorios que ha ingresado</p>
+
 <div class="col">
     <div class="input-group">
         <span class="input-group-text"> Numero intevalos</span>
@@ -6,4 +11,29 @@
 </div>
 <div class="col">
     <button class="btn btn-info" (click)="iniciar()">Ejecutar prueba K-S </button>
+</div>
+
+
+<br />
+<div class="row ">
+    <div class="col-auto">
+        <div class="lds-ring" *ngIf="isLoad">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div *ngIf="mostrar">
+            <div class="valid" *ngIf="isValid">
+                <h2> Los números han pasado la prueba de medias! 😁👌</h2>
+
+            </div>
+
+            <div class="invalid" *ngIf="!isValid">
+                <h2> Los números no pasaron la prueba de medias! 😥😖</h2>
+            </div>
+        </div>
+
+    </div>
 </div>

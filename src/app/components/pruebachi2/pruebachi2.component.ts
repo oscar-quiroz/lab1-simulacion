@@ -17,6 +17,11 @@ export class Pruebachi2Component implements OnInit {
     BIGGER_THAN: 1
   };
 
+
+  isLoad: boolean;
+  isValid: boolean;
+  mostrar: boolean = false;
+
   /**
    * Realiza la prueba chi2 a un conjunto de datos
    * @author Jhon Edison Rodriguez
@@ -132,7 +137,23 @@ export class Pruebachi2Component implements OnInit {
   }
 
   iniciar = function () {
+    this.isLoad = true;
+    setTimeout(() => {
+      this.mostrar = true;
+      let listaAux = this.chi_e_test(this.ListService.lista_de_numeros)
+      if (listaAux.final_result) {
+        console.log('los datos pasaron las pruebas');
+        this.isLoad = false;
+        this.isValid = true;
+      } else {
+        console.log('los datos no pasaron als pruebas');
+        this.isLoad = false;
+        this.isValid = false;
+      }
+    }, 500);
     console.log(this.chi_e_test(this.ListService.lista_de_numeros));
+
+    //final_result
   }
 
   constructor(private ListService:ListService) { }

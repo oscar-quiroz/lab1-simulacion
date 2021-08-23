@@ -8,6 +8,17 @@ import { ListService } from 'src/app/services/list.service';
 })
 export class PruebaKsComponent implements OnInit {
   numinter :number = 10;
+  
+  isLoad: boolean;
+  isValid: boolean;
+  mostrar: boolean = false;
+
+
+
+
+
+
+
   /**
    * aplica la prueba KS a un arreglo de numeros
    * @date 2021-08-22
@@ -226,6 +237,20 @@ export class PruebaKsComponent implements OnInit {
   constructor(private ListService:ListService) { }
 
   iniciar = function () {
+    this.isLoad = true;
+    setTimeout(() => {
+      this.mostrar = true;
+      let listaAux = this.make_ks_test(this.ListService.lista_de_numeros)
+      if (listaAux.result) {
+        console.log('los datos pasaron las pruebas');
+        this.isLoad = false;
+        this.isValid = true;
+      } else {
+        console.log('los datos no pasaron als pruebas');
+        this.isLoad = false;
+        this.isValid = false;
+      }
+    }, 500);
     console.log(this.make_ks_test(this.ListService.lista_de_numeros));
   }
   ngOnInit(): void {}
