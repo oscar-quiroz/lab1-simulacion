@@ -26,7 +26,8 @@ class pseudogenerator {
           );
     let ri = xBetween / 10000;
     let ni = min + (max - min) * ri;
-    this.list.find((obj) =>{obj.ni == ni})? this.list.push({ xi, xiSquared, xiSLength, xBetween, ri, ni,repeated:true }): this.list.push({ xi, xiSquared, xiSLength, xBetween, ri, ni,repeated:false });
+
+    this.list.find(obj => obj.ni === ni) != undefined ? this.list.push({ xi, xiSquared, xiSLength, xBetween, ri, ni,repeated:true }): this.list.push({ xi, xiSquared, xiSLength, xBetween, ri, ni,repeated:false });
     let amountxi = amount - 1;
     if (amountxi > 0) {
       this.generate(min, max, amountxi, xBetween);
