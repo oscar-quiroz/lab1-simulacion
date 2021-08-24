@@ -18,6 +18,7 @@ import { Pruebachi2Component } from './components/pruebachi2/pruebachi2.componen
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PruebaKsComponent } from './components/prueba-ks/prueba-ks.component';
+import { Poker5Component } from './components/poker5/poker5.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PruebaKsComponent } from './components/prueba-ks/prueba-ks.component';
     Pruebachi2Component,
     InicioComponent,
     HomeComponent,
-    PruebaKsComponent
+    PruebaKsComponent,
+    Poker5Component
 
   ],
   imports: [

@@ -6,17 +6,13 @@ import { ListService } from 'src/app/services/list.service';
   templateUrl: './prueba-ks.component.html',
   styleUrls: ['./prueba-ks.component.css'],
 })
+
 export class PruebaKsComponent implements OnInit {
   numinter :number = 10;
   
   isLoad: boolean;
   isValid: boolean;
   mostrar: boolean = false;
-
-
-
-
-
 
 
   /**

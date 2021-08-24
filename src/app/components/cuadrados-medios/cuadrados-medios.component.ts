@@ -3,7 +3,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 //clase para generar los numeros pseudoaleatorisos
 class pseudogenerator {
   public seed: number;
-  public list: Array<object> = [];
+  public list = [];
   constructor(seed: number) {
     this.seed = seed;
   }
@@ -26,7 +26,7 @@ class pseudogenerator {
           );
     let ri = xBetween / 10000;
     let ni = min + (max - min) * ri;
-    this.list.push({ xi, xiSquared, xiSLength, xBetween, ri, ni });
+    this.list.find((obj) =>{obj.ni == ni})? this.list.push({ xi, xiSquared, xiSLength, xBetween, ri, ni,repeated:true }): this.list.push({ xi, xiSquared, xiSLength, xBetween, ri, ni,repeated:false });
     let amountxi = amount - 1;
     if (amountxi > 0) {
       this.generate(min, max, amountxi, xBetween);
@@ -40,6 +40,7 @@ class pseudogenerator {
   templateUrl: './cuadrados-medios.component.html',
   styleUrls: ['./cuadrados-medios.component.css'],
 })
+
 export class CuadradosMediosComponent implements OnInit {
   count: number = 0;
 

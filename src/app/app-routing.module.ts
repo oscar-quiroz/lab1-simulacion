@@ -13,6 +13,7 @@ import { PruebaVarianzaComponent } from './components/prueba-varianza/prueba-var
 import { Pruebachi2Component } from './components/pruebachi2/pruebachi2.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PruebaKsComponent } from './components/prueba-ks/prueba-ks.component';
+import {Poker5Component} from './components/poker5/poker5.component'
 
 
 
@@ -35,7 +36,8 @@ const routes: Routes = [
       {path:'prueba-medias',component:PruebaMediasComponent},
       {path:'prueba-varianza',component:PruebaVarianzaComponent},
       {path:'pruebachi2',component:Pruebachi2Component},
-      {path:'prueba-ks',component:PruebaKsComponent}
+      {path:'prueba-ks',component:PruebaKsComponent},
+      {path:'prueba-poker',component:Poker5Component},
     ]
   }, 
   {
