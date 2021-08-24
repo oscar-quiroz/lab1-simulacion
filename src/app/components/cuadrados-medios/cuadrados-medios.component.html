@@ -74,8 +74,8 @@
                         <td>{{ item.xiSLength }}</td>
                         <td>{{ item.xBetween }}</td>
                         <td>{{ item.ri }}</td>
-                        <td>{{ item.ni }}</td>
-                        <td>{{item.repeated}}</td>
+                        <td [ngClass]="item.repeated===true ? repeated:valid">{{ item.ni }}</td>
+
                     </tr>
                 </tbody>
             </table>

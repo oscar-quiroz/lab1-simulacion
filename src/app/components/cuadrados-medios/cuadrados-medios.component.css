@@ -8,3 +8,11 @@ p {
     padding: 10px;
     background-color: #e2c574;
 }
+
+.repeat {
+    background-color: rgb(214, 73, 73);
+}
+
+.no_repeat {
+    background-color: rgb(98, 197, 98);
+}

@@ -4,6 +4,11 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 class pseudogenerator {
   public seed: number;
   public list = [];
+ 
+
+
+
+
   constructor(seed: number) {
     this.seed = seed;
   }
@@ -43,11 +48,16 @@ class pseudogenerator {
 })
 
 export class CuadradosMediosComponent implements OnInit {
+
+
+  repeated = "repeat"
+  valid = "no_repeat"
+
   count: number = 0;
 
-  semilla: number = 0;
-  min: number = 0;
-  max: number = 0;
+  semilla: number = 1597;
+  min: number = 8;
+  max: number = 10;
   cantidad;
   extension: number = 0;
 
