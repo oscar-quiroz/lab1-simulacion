@@ -1,41 +1,65 @@
 <br />
 
 <h1>Prueba K-S</h1>
-<p>La prueba K-S mide la <strong>uniformidad</strong> de los números pseaudo aleatorios que ha ingresado</p>
+<p>
+    La prueba K-S mide la <strong>uniformidad</strong> de los números pseaudo aleatorios que ha ingresado
+</p>
 <div class="row">
     <div class="col">
         <div class="input-group">
             <span class="input-group-text"> Numero intevalos</span>
             <input type="number" value="10" step="1" class="form-control" min="5" max="20" [(ngModel)]="numinter" />
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="lds-ring" *ngIf="isLoad">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div *ngIf="mostrar">
+                    <div class="valid" *ngIf="isValid">
+                        <h2>Los números han pasado la prueba K-S! 😁👌</h2>
+                    </div>
+
+                    <div class="invalid" *ngIf="!isValid">
+                        <h2>Los números no pasaron la prueba K-S! 😥😖</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col">
-        <button class="btn btn-info" (click)="iniciar()">Ejecutar prueba K-S </button>
+        <button class="btn btn-info" (click)="iniciar()">Ejecutar</button>
     </div>
-</div>
-
-
-
-<br />
-<div class="row ">
-    <div class="col-auto">
-        <div class="lds-ring" *ngIf="isLoad">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-
-        <div *ngIf="mostrar">
-            <div class="valid" *ngIf="isValid">
-                <h2> Los números han pasado la prueba K-S! 😁👌</h2>
-
-            </div>
-
-            <div class="invalid" *ngIf="!isValid">
-                <h2> Los números no pasaron la prueba K-S! 😥😖</h2>
-            </div>
-        </div>
-
+    <div class="col">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Li</th>
+                    <th scope="col">Ls</th>
+                    <th scope="col">F</th>
+                    <th scope="col">Fa</th>
+                    <th scope="col">Fea</th>
+                    <th scope="col">Pea</th>
+                    <th scope="col">Pobt</th>
+                    <th scope="col">dif</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of objetoTabla.intervals">
+                    <td>{{ item.li }}</td>
+                    <td>{{ item.ls }}</td>
+                    <td>{{ item.f }}</td>
+                    <td>{{ item.fa }}</td>
+                    <td>{{ item.fea }}</td>
+                    <td>{{ item.Pea }}</td>
+                    <td>{{ item.Pobt }}</td>
+                    <td>{{ item.dif }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

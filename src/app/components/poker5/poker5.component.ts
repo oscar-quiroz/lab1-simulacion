@@ -14,6 +14,8 @@ export class Poker5Component implements OnInit {
   isValid: boolean;
   mostrar: boolean = false;
 
+  objetoTabla:any={}
+
   constructor(private ListService:ListService) { }
   
   /**
@@ -149,6 +151,7 @@ export class Poker5Component implements OnInit {
         this.isValid = false;
       }
       console.log(listaAux)
+      this.objetoTabla = listaAux;
     }, 500); 
        
   }

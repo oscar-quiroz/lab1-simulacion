@@ -11,6 +11,8 @@ export class Pruebachi2Component implements OnInit {
 
   numinter :number = 10;
   alpha :number = 0.05;
+
+  objetoTabla:any={}
  
   Compare = {
     LESS_THAN: -1,
@@ -154,7 +156,8 @@ export class Pruebachi2Component implements OnInit {
         this.isValid = false;
       }
     }, 500);
-    console.log(this.chi_e_test(this.ListService.lista_de_numeros));
+    this.objetoTabla=this.chi_e_test(this.ListService.lista_de_numeros);
+    console.log(this.objetoTabla);
 
     //final_result
   }

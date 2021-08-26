@@ -14,6 +14,8 @@ export class PruebaKsComponent implements OnInit {
   isValid: boolean;
   mostrar: boolean = false;
 
+  objetoTabla:any={}
+
 
   /**
    * aplica la prueba KS a un arreglo de numeros
@@ -250,7 +252,8 @@ export class PruebaKsComponent implements OnInit {
         this.isValid = false;
       }
     }, 500);
-    console.log(this.make_ks_test(this.ListService.lista_de_numeros));
+    this.objetoTabla = this.make_ks_test(this.ListService.lista_de_numeros);
+    console.log("tabla:", this.objetoTabla);
   }
   ngOnInit(): void {}
 }

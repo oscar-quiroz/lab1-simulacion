@@ -8,33 +8,66 @@
             <span class="input-group-text"> α </span>
             <input type="number" value="0.05" step="0.01" class="form-control" min="0" max="1" [(ngModel)]="alpha" />
         </div>
+        <div class="row ">
+            <div class="col-auto">
+                <div class="lds-ring" *ngIf="isLoad">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div *ngIf="mostrar">
+                    <div class="valid" *ngIf="isValid">
+                        <h2> Los números han pasado la prueba de varianza! 😁👌</h2>
+
+                    </div>
+
+                    <div class="invalid" *ngIf="!isValid">
+                        <h2> Los números no pasaron la prueba de varianza! 😥😖</h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
     <div class="col">
         <button class="btn btn-info" (click)="iniciar()">Ejecutar prueba varianza</button>
+
     </div>
 </div>
-
-
 <br />
-<div class="row ">
-    <div class="col-auto">
-        <div class="lds-ring" *ngIf="isLoad">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
 
-        <div *ngIf="mostrar">
-            <div class="valid" *ngIf="isValid">
-                <h2> Los números han pasado la prueba de varianza! 😁👌</h2>
 
-            </div>
-
-            <div class="invalid" *ngIf="!isValid">
-                <h2> Los números no pasaron la prueba de varianza! 😥😖</h2>
-            </div>
-        </div>
-
-    </div>
+<div class="col">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">α</th>
+                <th scope="col">Chi2 α</th>
+                <th scope="col">Desviación / 2</th>
+                <th scope="col">Li</th>
+                <th scope="col">Ls</th>
+                <th scope="col">Media</th>
+                <th scope="col">- Chi2 α</th>
+                <th scope="col">n</th>
+                <th scope="col">1 - Desviación</th>
+                <th scope="col">Varianza</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ objetoTabla.alfa }}</td>
+                <td>{{ objetoTabla.chi_cua_alpha }}</td>
+                <td>{{ objetoTabla.desv_est_div_2 }}</td>
+                <td>{{ objetoTabla.li }}</td>
+                <td>{{ objetoTabla.ls }}</td>
+                <td>{{ objetoTabla.media }}</td>
+                <td>{{ objetoTabla.menos_chi_cua_alpha }}</td>
+                <td>{{ objetoTabla.n }}</td>
+                <td>{{ objetoTabla.uno_men_desv_est }}</td>
+                <td>{{ objetoTabla.varianza }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

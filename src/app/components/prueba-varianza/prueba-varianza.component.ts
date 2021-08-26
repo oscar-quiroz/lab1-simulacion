@@ -25,6 +25,9 @@ export class PruebaVarianzaComponent implements OnInit {
   isValid: boolean;
   mostrar: boolean = false;
 
+
+  objetoTabla:any={}
+
   /*
   * esta funcion obtiene la media de un conjunto de datos
   */
@@ -108,8 +111,8 @@ export class PruebaVarianzaComponent implements OnInit {
         this.isValid = false;
       }
     }, 500);
-
-    console.log(this.pueba_varianza(this.ListService.lista_de_numeros));
+    this.objetoTabla=this.pueba_varianza(this.ListService.lista_de_numeros)
+    console.log(this.objetoTabla);
   }
 
 
