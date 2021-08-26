@@ -6,79 +6,54 @@
     <div class="row">
         <div class="col">
             <div class="input-group">
-                <span class="input-group-text">Semilla</span>
-                <input type="number" class="form-control" min="0" [(ngModel)]="semilla" />
+                <span class="input-group-text">Media</span>
+                <input type="number" class="form-control" min="0" [(ngModel)]="media" />
             </div>
         </div>
 
         <div class="col">
             <div class="input-group">
-                <span class="input-group-text">Minimo</span>
-                <input type="number" class="form-control" min="0" [(ngModel)]="min" />
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="input-group">
-                <span class="input-group-text">Maximo</span>
-                <input type="number" class="form-control" min="0" [(ngModel)]="max" />
+                <span class="input-group-text">Desviación</span>
+                <input type="number" class="form-control" min="0" [(ngModel)]="desviacion" />
             </div>
         </div>
         <div class="col">
             <div class="input-group">
-                <span class="input-group-text">Cantidad</span>
-                <select class="form-select" [(ngModel)]="cantidad">
-          <option selected value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="100">100</option>
-        </select>
+                <span class="input-group-text">Iteraciones</span>
+                <input type="number" class="form-control" min="0" [(ngModel)]="iteraciones" />
             </div>
         </div>
 
         <div class="col">
-            <button class="btn btn-info">Generar</button>
+            <button class="btn btn-info" (click)="generar()">Generar</button>
         </div>
     </div>
     <br />
     <div class="row">
         <div class="col-2">
-            <p><strong>Semilla:</strong> {{ semilla }}</p>
-            <p><strong>Minimo:</strong> {{ min }}</p>
-            <p>
-                <Strong>Maximo:</Strong> {{ max }}</p>
-            <p>
-                <Strong>Cantidad</Strong>: {{ cantidad }}</p>
-        </div>
+            <p><strong>Media:</strong> {{ media }}</p>
+            <p><strong>Desviación:</strong> {{ desviacion }}</p>
 
-        <div class="col">
+
+
+        </div>
+        <div class="col-2">
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th scope="col">i</th>
-                        <th scope="col">Xi</th>
-                        <th scope="col">Xi²</th>
-                        <th scope="col">Extension</th>
-                        <th scope="col">Extraccion</th>
-                        <th scope="col">Ri</th>
-                        <th scope="col">Ni</th>
-                        <th scope="col">Validate</th>
+                        <th scope="col">Número</th>
+                        <th scope="col"></th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of listaNumeros; let i = index">
                         <th>{{ i }}</th>
-                        <td>{{ item.xi }}</td>
-                        <td>{{ item.xi2 }}</td>
-                        <td>{{ item.extension }}</td>
-                        <td>{{ item.extaccion }}</td>
-                        <td>{{ item.ri }}</td>
-                        <td>{{ item.ni }}</td>
-                        <td>{{ item.validate }}</td>
+                        <td>{{ item }}</td>
+
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-</div>

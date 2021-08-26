@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as jstat from 'jstat';
 
 @Component({
   selector: 'app-normal',
@@ -8,21 +9,22 @@ import { Component, OnInit } from '@angular/core';
 export class NormalComponent implements OnInit {
   count: number = 0;
 
-  semilla: number = 0;
-  min: number = 0;
-  max: number = 0;
-  cantidad;
-  extension: number = 0;
-
-  xi: number = 0;
-  xi2: number = 0;
-  extaccion: number = 0;
-  ri: number = 0;
-  ni: number = 0;
+  media: number = 15;
+  desviacion: number = 2;
+  iteraciones: number = 20;
 
   listaNumeros = [];
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  generar() {
+    let x = 1;
+    while (x < this.iteraciones) {
+      let numero = jstat.normal.sample(this.media, this.desviacion);
+      this.listaNumeros.push(numero);
+      x++;
+    }
+  }
 }
