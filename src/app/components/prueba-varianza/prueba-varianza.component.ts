@@ -61,32 +61,35 @@ export class PruebaVarianzaComponent implements OnInit {
   pueba_varianza = function (data:Array<number>) {
     if (!data || data.length == 0){
       alert("por favor importe un conjunto de datos")
+      this.isLoad = false;
       return
+    }else{
+      this.n =  data.length;
+      this.media = this.getmedia(data);
+      this.varianza = this.getVarianzaPoblacion(data);
+      this.DesvEdiv2 = this.getDesviacionEstandar(data) / 2;
+      this.one_min_DesvEdiv2 = 1-this.DesvEdiv2;
+      console.log(this.varianza,this.DesvEdiv2)
+      this.ji2alphadiv2 = inv_chi_2.invChiSquareCDF(this.DesvEdiv2,this.n-1);
+      this.ji2minalphadiv2 = inv_chi_2.invChiSquareCDF(this.one_min_DesvEdiv2,this.n-1);
+      this.li = this.ji2alphadiv2 /(12*this.n-1)
+      this.ls = this.ji2minalphadiv2/(12*this.n-1)
+      let valid =  this.varianza > this.li && this.varianza < this.ls ? true : false;
+      return {
+        alfa:this.alpha,
+        n : this.n,
+        media: this.media,
+        varianza: this.varianza,
+        desv_est_div_2: this.DesvEdiv2,
+        uno_men_desv_est: this.one_min_DesvEdiv2,
+        chi_cua_alpha: this.ji2alphadiv2,
+        menos_chi_cua_alpha:this.ji2minalphadiv2,
+        li:this.li,
+        ls:this.ls,
+        valid
+      }
     }
-    this.n =  data.length;
-    this.media = this.getmedia(data);
-    this.varianza = this.getVarianzaPoblacion(data);
-    this.DesvEdiv2 = this.getDesviacionEstandar(data) / 2;
-    this.one_min_DesvEdiv2 = 1-this.DesvEdiv2;
-    console.log(this.varianza,this.DesvEdiv2)
-    this.ji2alphadiv2 = inv_chi_2.invChiSquareCDF(this.DesvEdiv2,this.n-1);
-    this.ji2minalphadiv2 = inv_chi_2.invChiSquareCDF(this.one_min_DesvEdiv2,this.n-1);
-    this.li = this.ji2alphadiv2 /(12*this.n-1)
-    this.ls = this.ji2minalphadiv2/(12*this.n-1)
-    let valid =  this.varianza > this.li && this.varianza < this.ls ? true : false;
-    return {
-      alfa:this.alpha,
-      n : this.n,
-      media: this.media,
-      varianza: this.varianza,
-      desv_est_div_2: this.DesvEdiv2,
-      uno_men_desv_est: this.one_min_DesvEdiv2,
-      chi_cua_alpha: this.ji2alphadiv2,
-      menos_chi_cua_alpha:this.ji2minalphadiv2,
-      li:this.li,
-      ls:this.ls,
-      valid
-    }
+    
   }
 
   iniciar = function () { 

@@ -25,28 +25,31 @@ export class PruebaKsComponent implements OnInit {
   make_ks_test = function (data: Array<number>) {  
     if (!data || data.length == 0){
       alert("por favor importe un conjunto de datos")
+      this.isLoad = false;
       return
-    } 
-    let ni = this.numinter; 
-    let intervals = this.separate_intervals(ni, data);
-    this.calculateFrecuency(data, intervals);
-    this.calculate_cumulative_frecuency(intervals);
-    this.calculate_prob_obtained(intervals, data.length);
-    this.calculate_expected_frecuency(intervals, data.length, ni);
-    this.calculate_expected_probability(intervals, data.length);
-    this.calculate_main_diferencial(intervals);
-    let max_p_dif = -1;
-    for (let index = 0; index < intervals.length; index++) {
-      intervals[index].dif > max_p_dif
-        ? (max_p_dif = intervals[index].dif)
-        : (max_p_dif = max_p_dif);
+    } else{
+      let ni = this.numinter; 
+      let intervals = this.separate_intervals(ni, data);
+      this.calculateFrecuency(data, intervals);
+      this.calculate_cumulative_frecuency(intervals);
+      this.calculate_prob_obtained(intervals, data.length);
+      this.calculate_expected_frecuency(intervals, data.length, ni);
+      this.calculate_expected_probability(intervals, data.length);
+      this.calculate_main_diferencial(intervals);
+      let max_p_dif = -1;
+      for (let index = 0; index < intervals.length; index++) {
+        intervals[index].dif > max_p_dif
+          ? (max_p_dif = intervals[index].dif)
+          : (max_p_dif = max_p_dif);
+      }
+      let max_acepted_p_dif = this.get_ks_test_value(data.length);
+      if (max_p_dif < max_acepted_p_dif){
+        return {intervals:intervals,result:true}
+      }else{
+        return {intervals:intervals,result:false}
+      }
     }
-    let max_acepted_p_dif = this.get_ks_test_value(data.length);
-    if (max_p_dif < max_acepted_p_dif){
-      return {intervals:intervals,result:true}
-    }else{
-      return {intervals:intervals,result:false}
-    }
+  
   };
 
   /**

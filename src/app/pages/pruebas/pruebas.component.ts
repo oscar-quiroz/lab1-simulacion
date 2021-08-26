@@ -32,13 +32,11 @@ export class PruebasComponent implements OnInit {
     lector.onload = (e) => {
       let contenido = e.target.result;
       this.numeros = contenido;
-
       this.lsita = this.numeros.split(',');
       this.listService.addList( this.numeros );
       this.imprimirLongitud();
     };
     lector.readAsText(archivo);
-    
   }
 
 

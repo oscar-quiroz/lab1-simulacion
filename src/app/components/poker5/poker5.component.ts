@@ -25,7 +25,12 @@ export class Poker5Component implements OnInit {
    */
   poker_test = function(data) {
     //reducimos el número de decimales a 5 y los extraemos
-    let myFunc = num => Number(num);
+    if( !data || data.length == 0 ){
+      this.isLoad = false;
+      alert("por favor importe un conjunto de datos")
+      return
+    }else{
+      let myFunc = num => Number(num);
     if(data[0]/100000 != 0){
       data.forEach((value,index)=>{
         data[index] = parseFloat(value.toFixed(7).slice(0,-1));
@@ -105,6 +110,8 @@ export class Poker5Component implements OnInit {
       sum:total,
       chi2:aceptable
     }
+    }
+    
   }
 
   /**

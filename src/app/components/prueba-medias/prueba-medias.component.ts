@@ -97,27 +97,30 @@ export class PruebaMediasComponent implements OnInit {
   validate = function (data: Array<number>) {
     if (!data || data.length == 0) {
       alert('por favor importe un conjunto de datos');
+      this.isLoad=false
       return;
+    }else{
+      this.aceptacion = 1 - this.alfa;
+      this.uno_menos_alfa_medios = 1 - this.alfa / 2;
+      let n = data.length;
+      let R = this.getmedia(data);
+      let z = this.percentile_z(this.uno_menos_alfa_medios);
+      let li = this.lim_inferior(data);
+      let ls = this.lim_superior(data);
+      let valid = R > li && R < ls ? true : false;
+      return {
+        alpha: this.alfa,
+        aceptacion: this.aceptacion,
+        n: n,
+        R: R,
+        uno_menos_alfa_medios: this.uno_menos_alfa_medios,
+        z: z,
+        li: li,
+        ls: ls,
+        valid: valid,
+      };
     }
-    this.aceptacion = 1 - this.alfa;
-    this.uno_menos_alfa_medios = 1 - this.alfa / 2;
-    let n = data.length;
-    let R = this.getmedia(data);
-    let z = this.percentile_z(this.uno_menos_alfa_medios);
-    let li = this.lim_inferior(data);
-    let ls = this.lim_superior(data);
-    let valid = R > li && R < ls ? true : false;
-    return {
-      alpha: this.alfa,
-      aceptacion: this.aceptacion,
-      n: n,
-      R: R,
-      uno_menos_alfa_medios: this.uno_menos_alfa_medios,
-      z: z,
-      li: li,
-      ls: ls,
-      valid: valid,
-    };
+   
   };
 
   iniciar = function () {

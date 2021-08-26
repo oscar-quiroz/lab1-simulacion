@@ -33,26 +33,29 @@ export class Pruebachi2Component implements OnInit {
   chi_e_test = function(data:Array<number>){
     if (!data || data.length == 0){
       alert("por favor importe un conjunto de datos")
+      this.isLoad=false;
       return
+    }else{
+      let res = this.separate_intervals(this.numinter,data); // los intervalos separados
+      let f_esp = data.length/this.numinter;
+      this.calculateFrecuency(data,res);
+      let chi_sum = 0;
+      res.forEach(element => { //calculamos chi en base a la frecuencia
+        element.chi2 = (element.f - f_esp)**2 / f_esp
+        chi_sum += element.chi2;
+      });    
+      let gl = this.numinter-1; // grados de libertad
+      let test_result = inv_chi_2.invChiSquareCDF(this.alpha,gl);//calculo de la funcion equivalente a prueba.chi.inv de exel
+      return {
+        intervals:res,
+        f_esperada:f_esp,
+        sum_chi2:chi_sum,
+        gl:gl,
+        test_result:test_result,
+        final_result: test_result<chi_sum?true:false
+      }
     }
-    let res = this.separate_intervals(this.numinter,data); // los intervalos separados
-    let f_esp = data.length/this.numinter;
-    this.calculateFrecuency(data,res);
-    let chi_sum = 0;
-    res.forEach(element => { //calculamos chi en base a la frecuencia
-      element.chi2 = (element.f - f_esp)**2 / f_esp
-      chi_sum += element.chi2;
-    });    
-    let gl = this.numinter-1; // grados de libertad
-    let test_result = inv_chi_2.invChiSquareCDF(this.alpha,gl);//calculo de la funcion equivalente a prueba.chi.inv de exel
-    return {
-      intervals:res,
-      f_esperada:f_esp,
-      sum_chi2:chi_sum,
-      gl:gl,
-      test_result:test_result,
-      final_result: test_result<chi_sum?true:false
-    }
+   
   }
 
   /**
