@@ -1,1 +1,36 @@
-<p>poker5 works!</p>
+<br />
+
+<h1>Prueba poker 5</h1>
+<p>La prueba poker 5 evalua <strong>no coorelacion serial</strong> de los números pseaudo aleatorios que ha ingresado</p>
+
+<div class="row">
+    <div class="col">
+        <button class="btn btn-info" (click)="iniciar()">Ejecutar prueba poker 5</button>
+    </div>
+</div>
+
+<div class="row">
+
+    <br />
+    <div class="row ">
+        <div class="col-auto">
+            <div class="lds-ring" *ngIf="isLoad">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div *ngIf="mostrar">
+                <div class="valid" *ngIf="isValid">
+                    <h2> Los números han pasado la prueba Poker 5! 😁👌</h2>
+
+                </div>
+
+                <div class="invalid" *ngIf="!isValid">
+                    <h2> Los números no pasaron la prueba Poker 5! 😥😖</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
