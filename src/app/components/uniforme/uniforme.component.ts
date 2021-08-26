@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as jstat from 'jstat'
 
 @Component({
   selector: 'app-uniforme',
@@ -8,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class UniformeComponent implements OnInit {
   count: number = 0;
 
-  semilla: number = 0;
-  min: number = 0;
-  max: number = 0;
+  iteraciones: number = 10;
+  min: number = 8;
+  max: number = 10;
   cantidad;
   extension: number = 0;
 
@@ -24,4 +25,18 @@ export class UniformeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  generar(){
+    this.listaNumeros=[]
+    console.log("imprimir")
+    let x=1;
+    let aux,aux2 =0;
+    while(x <= this.iteraciones){
+      let number = jstat.uniform.sample(this.min, this.max)
+      this.listaNumeros.push(number)
+      x++;
+    }
+    console.log(this.listaNumeros)
+  }
+
 }

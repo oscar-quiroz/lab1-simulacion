@@ -21,6 +21,7 @@
     "@angular/router": "~11.2.4",
     "chi-squared": "^1.1.0",
     "inv-chisquare-cdf": "^1.0.1",
+    "jstat": "^1.9.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
