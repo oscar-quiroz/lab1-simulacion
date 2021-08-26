@@ -25,14 +25,15 @@ export class Poker5Component implements OnInit {
    * @param {any} data:Array<number>
    * @returns {any}
    */
-  poker_test = function(data) {
+  poker_test = function(datas) {
+    let data = [...datas];
     //reducimos el número de decimales a 5 y los extraemos
     if( !data || data.length == 0 ){
       this.isLoad = false;
       alert("por favor importe un conjunto de datos")
       return
     }else{
-      let myFunc = num => Number(num);
+    
     if(data[0]/100000 != 0){
       data.forEach((value,index)=>{
         data[index] = parseFloat(value.toFixed(7).slice(0,-1));
