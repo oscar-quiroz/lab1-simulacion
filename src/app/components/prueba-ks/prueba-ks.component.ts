@@ -50,8 +50,7 @@ export class PruebaKsComponent implements OnInit {
       }else{
         return {intervals:intervals,result:false}
       }
-    }
-  
+    }  
   };
 
   /**
