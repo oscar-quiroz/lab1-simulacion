@@ -58,7 +58,7 @@ export class CuadradosMediosComponent implements OnInit {
   semilla: number = 1597;
   min: number = 8;
   max: number = 10;
-  cantidad;
+  cantidad = 5;
   extension: number = 0;
 
   xi: number = 0;

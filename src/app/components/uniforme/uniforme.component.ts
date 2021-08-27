@@ -11,7 +11,7 @@ export class UniformeComponent implements OnInit {
   count: number = 0;
 
   iteraciones: number = 2000;
-  min: number = 8;
+  min: number = 4;
   max: number = 10;
   cantidad;
   extension: number = 0;

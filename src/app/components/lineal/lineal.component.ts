@@ -20,7 +20,7 @@ export class LinealComponent implements OnInit {
   xi: number = 0;
   min: number = 8;
   max: number = 10;
-  cantidad;
+  cantidad=5;
 
   ri: number = 0;
   ni: number = 0;
@@ -42,7 +42,7 @@ export class LinealComponent implements OnInit {
       ni: this.ni,
     });
 
-    if (this.count === parseInt(this.cantidad)) {
+    if (this.count === parseInt(this.cantidad+"")) {
       console.log('terminar');
     } else {
       this.Iniciar(this.x0);
@@ -80,7 +80,7 @@ export class LinealComponent implements OnInit {
         alert('min debe ser menor a max');
       }
     } else {
-      alert('Fsota');
+      alert('Ingrese todos los datos en el formulario');
     }
   }
 }

@@ -16,9 +16,9 @@ export class MultiplicativasComponent implements OnInit {
   a: number = 0;
   m: number = 0;
 
-  min: number = 0;
-  max: number = 0;
-  cantidad;
+  min: number = 8;
+  max: number =12;
+  cantidad=5;
 
   xi: number = 0;
   ri: number = 0;
@@ -41,7 +41,7 @@ export class MultiplicativasComponent implements OnInit {
       ni: this.ni,
     });
 
-    if (this.count === parseInt(this.cantidad)) {
+    if (this.count === parseInt(this.cantidad+"")) {
       console.log('terminar');
     } else {
       this.Iniciar(this.x0);
@@ -79,7 +79,7 @@ export class MultiplicativasComponent implements OnInit {
         alert('min debe ser menor a max');
       }
     } else {
-      alert('Fsota');
+      alert('Ingrese todos los datos del formulario');
     }
   }
 }
