@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ChartsModule } from 'ng2-charts';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MetodosComponent } from './pages/metodos/metodos.component';
@@ -19,7 +21,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PruebaKsComponent } from './components/prueba-ks/prueba-ks.component';
 import { Poker5Component } from './components/poker5/poker5.component';
-
+import { BarGraphicsComponent } from './components/bar-graphics/bar-graphics.component';
 
 @NgModule({
   declarations: [
@@ -38,15 +40,11 @@ import { Poker5Component } from './components/poker5/poker5.component';
     InicioComponent,
     HomeComponent,
     PruebaKsComponent,
-    Poker5Component
-
+    Poker5Component,
+    BarGraphicsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ChartsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
